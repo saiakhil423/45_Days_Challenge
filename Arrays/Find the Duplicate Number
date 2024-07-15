@@ -1,0 +1,25 @@
+1.use 2 loops to find the repeated number
+2.sort the array and traverse the array for one to find the duplicate
+3.use hashing-iterate the original array and create new array if we find number convert the array number index into 1 and if we get another repeated number 1 return that number.
+4.use slow and fast pointers.
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        
+        // Phase 1: Finding the intersection point of the two runners.
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        
+        // Phase 2: Finding the entrance to the cycle.
+        slow = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
+    }
+}
