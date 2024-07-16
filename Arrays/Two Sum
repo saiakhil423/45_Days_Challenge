@@ -1,0 +1,62 @@
+App1:
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int n=nums.length;
+        int[] ans = new int[2];
+        ans[0] = ans[1] = -1;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                int sum=nums[i]+nums[j];
+                if (sum == target){
+                    ans[0]=i;
+                    ans[1]=j;
+                    return ans;
+                }
+            }
+        }
+        return ans;
+    }
+}
+App2:
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] originalNums = nums.clone();
+        Arrays.sort(nums);
+        int i=0;
+        int j=nums.length-1;
+        int sum=0;
+        int newarr[]=new int[2];
+        //Arrays.sort(nums);
+        while(i<j){
+            sum=nums[i]+nums[j];
+            if(sum==target){
+                int index1 = findIndex(originalNums, nums[i]);
+                int index2 = findIndex(originalNums, nums[j],index1);
+                newarr[0] = index1;
+                newarr[1] = index2;
+                return newarr;
+            }else if(sum>target){
+                j--;
+            }else{
+                i++;
+            }
+        }
+        return newarr;
+    }
+    private int findIndex(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private int findIndex(int[] nums, int target, int excludeIndex) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target && i != excludeIndex) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
