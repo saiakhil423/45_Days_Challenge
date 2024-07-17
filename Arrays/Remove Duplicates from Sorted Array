@@ -1,0 +1,33 @@
+app1:using hashset in java:::HashSet<Integer> h=new HashSet<>();
+
+import java.util.*;
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int num : nums) {
+            set.add(num);
+        }
+        int index = 0;
+        for (int num : set) {
+            nums[index++] = num;
+        }
+        return set.size();
+    }
+}
+
+App2:using 2pointers find unique element using j and replace i with j
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i=0;
+        for(int j=1;j<nums.length;j++){
+            if(nums[j]!=nums[i]){
+                nums[i+1]=nums[j];
+                i++;
+            }
+        }
+        return i+1;
+    }
+}
