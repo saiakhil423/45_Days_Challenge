@@ -1,2 +1,2 @@
-# 45_Days_Challenge
-Accepting the challenge for placement preparation.
+# DSA Preparation
+Preparing the DSA to enhance problem solving skills. 
